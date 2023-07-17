@@ -1,24 +1,229 @@
-# Compiled class file
-*.class
+//Press a button to choose your path
+//See the README file for more information
 
-# Log file
-*.log
+/* VARIABLES */
+let enterButton;
+let a1Button;
+let a2Button;
+let b1Button;
+let b2Button;
+let goButton;
+let c1Button;
+let c2Button;
+let screen = 0;
 
-# BlueJ files
-*.ctxt
+/* SETUP RUNS ONCE */
+function setup() {
+  createCanvas(600, 400);
+  textAlign(CENTER);
+  textSize(20);
+  noStroke();
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+  // Set up the home screen
+  background("lightgreen");
+  text(
+    "Today's your 11th birthday...",
+    width / 2,
+    height / 2 - 100
+  );
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+  // Create buttons for all screens
+  enterButton = new Sprite(width / 2, height / 2 + 100);
+  a1Button = new Sprite(-200, -200);
+  a2Button = new Sprite(-50, -50);
+  b1Button = new Sprite(-100, -100);
+  b2Button = new Sprite(-150, -150);
+  goButton = new Sprite(-100, -100);
+  c1Button = new Sprite(-100, -100);
+  c2Button = new Sprite(-100, -100);
+  d1Button = new Sprite(-100, -100);
+  d2Button = new Sprite(-100, -100);
+}
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+/* DRAW LOOP REPEATS */
+function draw() {
+  // Display enter button
+  enterButton.w = 100;
+  enterButton.h = 50;
+  enterButton.collider = 'k';
+  enterButton.color = 'plum';
+  enterButton.text = 'Wake up';
+
+
+  // Check enter button
+  if (enterButton.mouse.presses()) {
+    print("pressed");
+    showScreen1();
+    screen = 1;
+  }
+  if (screen == 1) {
+    if (a1Button.mouse.presses()) {
+      print("Display screen 2");
+      showScreen2();
+      screen = 2;
+    } else if (a2Button.mouse.presses()) {
+      print("Display screen 5");
+      showScreen5();
+      screen = 5;
+    }
+  } 
+  
+  if (screen == 2) {
+    if (b1Button.mouse.presses()) {
+      print("Display screen 3");
+      showScreen3();
+      screen = 3;
+      
+    } else if (b2Button.mouse.presses()) {
+      print("Display screen 4");
+      showScreen4();
+      screen = 4;
+    }
+  }
+  
+  if (screen == 3) {
+    if (c1Button.mouse.presses()) {
+      print("Display screen 6");
+      showScreen6();
+      screen = 6;
+      
+    } else if (c2Button.mouse.presses()) {
+      print("Display screen 7");
+      showScreen7();
+      screen = 7;
+    }
+  }
+}
+
+/* FUNCTIONS TO DISPLAY SCREENS */
+function showScreen1() {
+  background('lightgreen');
+  text("You've decided to:",
+    width / 2,
+    height / 2 - 100);
+
+  enterButton.pos = { x: -100, y: -100 };
+
+  a1Button.pos = { x: width / 2 - 50, y: height / 2 + 100 };
+  a1Button.w = 80;
+  a1Button.h = 50;
+  a1Button.collider = 'k';
+  a1Button.color = 'plum';
+  a1Button.text = 'Go out';
+
+  a2Button.pos = { x: width / 2 + 50, y: height / 2 + 100 };
+  a2Button.w = 80;
+  a2Button.h = 50;
+  a2Button.collider = 'k';
+  a2Button.color = 'plum';
+  a2Button.text = 'Sleep in';
+}
+
+function showScreen2() {
+  background('lightgreen');
+  text("You saw an owl flying towards your direction, you have decided to:",
+    width / 2,
+    height / 2 - 100);
+
+  a1Button.pos = { x: -100, y: -100 };
+  a2Button.pos = { x: -100, y: -100 };
+
+  b1Button.pos = { x: width / 2 - 60, y: height / 2 + 100 };
+  b1Button.w = 100;
+  b1Button.h = 50;
+  b1Button.collider = 'k';
+  b1Button.color = 'plum';
+  b1Button.text = 'Welcome\n it in';
+
+  b2Button.pos = { x: width / 2 + 60, y: height / 2 + 100 };
+  b2Button.w = 100;
+  b2Button.h = 50;
+  b2Button.collider = 'k';
+  b2Button.color = 'plum';
+  b2Button.text = 'Close\n the window';
+}
+
+function showScreen3() {
+  background('lightgreen'); 
+  text("You got a letter from Hogwarts, and noticed that you are a wizard! A gigantic man named Hagrid came to pick you up, he told you that you guys will head over to an island to pick up another boy called Harry Potter.",
+    width / 2,
+    height / 2 - 100);
+  b1Button.pos = { x: -100, y: -100 };
+  b2Button.pos = { x: -100, y: -100 };
+
+  goButton.pos = { x: width / -60, y: height / 2 + 100 };
+  goButton.w = 100;
+  goButton.h = 50;
+  goButton.color = 'plum';
+  goButton.text = 'Let\'s go!';
+}
+
+function showScreen4() {
+  backgroun('lightgreen');
+  text("You missed the opportunity to go to Hogwarts and stayed     in the muggle world for your whole life.",
+    width / 2,
+    height / 2 - 100);
+  b1Button.pos = { x: -100, y: -100 };
+  b2Button.pos = { x: -150, y: -150 };
+}
+
+function showScreen5() {
+  background('lightgreen');
+  text("You blacked out and died.\nBE1 OBTAINED: PERPETUAL SLUMBER",
+    width / 2,
+    height / 2 - 100);
+  a1Button.pos = { x: -100, y: -100 };
+  a2Button.pos = { x: -100, y: -100 };
+}
+
+function showScreen6() {
+  background('lightgreen');
+  text("It was a gloomy day... heavy rains blurred your vision, the dark sky was illuminated by lightning, you and Hagrid broke into this tiny house like two villains.\n The house owner took out a gun——\n Hagrid knot the gun like a rubber!\n [Holy...]\n Appearently, you are not the only one that think this way. You saw this skinny boy with messy black hair and catlike green eyes.\n He must be Harry Potter——You thought.\n You've decided to..."
+    width / 2,
+    height / 2 - 100);
+  c1Button.pos = { x: width / 2 - 50, y: height / 2 + 100 };
+  c1Button.w = 80;
+  c1Button.h = 50;
+  c1Button.collider = 'k';
+  c1Button.color = 'plum';
+  c1Button.text = 'Smile';
+
+  c2Button.pos = { x: width / 2 + 50, y: height / 2 + 100 };
+  c2Button.w = 80;
+  c2Button.h = 50;
+  c2Button.collider = 'k';
+  c2Button.color = 'plum';
+  c2Button.text = 'Punch him!';
+}
+
+function showScreen7() {
+  background('lightgreen');
+  text("[Why am I doing this?]\n Before you could analysize your action, your fist had gotton closer and closer to that frightened piece of forest; his clear eyes poured out your hideous shadow like a mirror. You can't help but stunned for a moment.\n Hagrid let out a sharp scream and tried to stop you with his strength, but he forgot that he's a half giant——and you, you're just an 11 years old girl...\n Your neck was broken. \n People didn't blame Hagrid, because they thought that you're a spy from the death eaters.\n BE2 OBTAINED: WRONGFUL DEATH"
+      width / 2,
+      height / 2 -100);
+  c1Button.pos = { x: -100, y: -100 };
+  c2Button.pos = { x: -100, y: -100 };
+}
+
+function showScreen8() {
+  background('lightgreen');
+  text("Harry Potter smiled back at you, and after a night of rest, Hagrid brought you guys to the Diagon Alley. Hagrid took you to Gringotts, where you saw the gold mountain accumulated by generations of the Potter family. But for you, who grew up in a Muggle orphanage, you have to apply for financial aid. You felt:
+       width / 2,
+       height / 2 -100);
+  c1Button.pos = { x: -100, y: -100 };
+  c2Button.pos = { x: -100, y: -100 };
+
+  d1Button.pos = { x: width / 2 - 50, y: height / 2 + 100};
+  d1Button.w = 80;
+  d1Button.h = 50;
+  d1Button.collider = 'k';
+  d1Button.color = 'plum';
+  d1Button.text = "Happy for Potter";
+
+  d2Button.pos = { x: width / 2 - 50, y: height / 2 + 100};
+  d2Button.w = 80;
+  d2Button.h = 50;
+  d2Button.collider = 'k';
+  d2Button.color = 'plum';
+  d2Button.text = "Embarrased";  
+}
